@@ -1,6 +1,6 @@
 {
     "name": "forguncy-guide",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "活字格的全栈式学习文档",
     "type": "module",
     "private": true,
@@ -12,10 +12,7 @@
         "docs:export": "press-export-pdf export docs"
     },
     "devDependencies": {
-        "vitepress": "^1.5.0",
-        "vitepress-export-pdf": "1.0.0"
-    },
-    "dependencies": {
-        "multimatch": "^7.0.0"
+        "vitepress": "^1.6.3",
+        "vitepress-export-pdf": "^1.0.0"
     }
 }
