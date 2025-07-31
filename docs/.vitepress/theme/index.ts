@@ -1,9 +1,6 @@
-import DefaultTheme from 'vitepress/theme'
-
+import Theme from 'vitepress/theme'
+import 'virtual:group-icons.css'
 // custom CSS
 import './style/print.css'
 
-export default {
-  // Extending the Default Theme
-  ...DefaultTheme,
-}
+export default Theme

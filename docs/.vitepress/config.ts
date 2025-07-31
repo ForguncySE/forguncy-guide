@@ -1,4 +1,5 @@
 import { DefaultTheme, defineConfig } from 'vitepress'
+import { groupIconMdPlugin, groupIconVitePlugin, localIconLoader } from 'vitepress-plugin-group-icons'
 import { baseUrl, siteDescription, siteTitle } from './meta'
 
 /* 顶部的导航菜单 */
@@ -16,6 +17,15 @@ const nav: DefaultTheme.Config['nav'] = [
     text: '标准化',
     link: '/standard/introduction',
     activeMatch: '^/standard'
+  },
+  {
+    text: 'AI 技术',
+    items: [
+      {
+        text: 'RAG',
+        link: '/ai/rag/introduction'
+      }
+    ]
   },
   {
     text: '解决方案',
@@ -101,6 +111,7 @@ const sidebar: DefaultTheme.Config['sidebar'] = {
   //     ]
   //   },
   // ],
+  '/ai/rag/': siderbarAIRagGateway(),
   '/standard/': siderbarStandard(),
   '/solution/load-balance': sidebarSolutionLB(),
   '/solution/gateway/': siderbarSolutionGateway(),
@@ -197,6 +208,28 @@ function siderbarStandard() {
     //   link: '/standard/team/index'
     // },
     { text: '常见问题', link: '/standard/question' },
+  ]
+}
+
+// AI - RAG 相关的左侧菜单
+function siderbarAIRagGateway() {
+  return [
+    { text: '简介', link: "/ai/rag/introduction" },
+    { text: '基础原理', link: "/ai/rag/base-process" },
+    {
+      text: 'RAG 实战',
+      items: [
+        { text: '代码实战', link: "ai/rag/practice-code" },
+        { text: '低代码实战', link: "ai/rag/practice-lowcode" }
+      ]
+    },
+    {
+      text: 'RAG 框架',
+      items: [
+        { text: 'GC-QA-RAG', link: "/ai/rag/introduction" },
+      ]
+    },
+
   ]
 }
 
@@ -333,6 +366,9 @@ export default defineConfig({
       detailsLabel: 'DETAILS'
     },
     lineNumbers: true,
+    config(md) {
+      md.use(groupIconMdPlugin)
+    }
   },
   locales: {
     root: {
@@ -389,5 +425,16 @@ export default defineConfig({
       message: '<span>Released under the MIT License.</span>',
       copyright: 'Copyright © 2023-present 格言格语'
     },
+
   },
+
+  vite: {
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          'java': 'vscode-icons:file-type-java'
+        },
+      })
+    ]
+  }
 })
