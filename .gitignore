@@ -25,3 +25,5 @@ output-pdf/*
 *.njsproj
 *.sln
 *.sw?
+
+.vercel/*

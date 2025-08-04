@@ -219,14 +219,14 @@ function siderbarAIRagGateway() {
     {
       text: 'RAG 实战',
       items: [
-        { text: '代码实战', link: "ai/rag/practice-code" },
-        { text: '低代码实战', link: "ai/rag/practice-lowcode" }
+        { text: '代码实战', link: "/ai/rag/practice-code" },
+        { text: '低代码实战', link: "/ai/rag/practice-lowcode" }
       ]
     },
     {
       text: 'RAG 框架',
       items: [
-        { text: 'GC-QA-RAG', link: "/ai/rag/introduction" },
+        { text: 'GC-QA-RAG', link: "/ai/rag/gc-qa-rag" },
       ]
     },
 
@@ -432,7 +432,10 @@ export default defineConfig({
     plugins: [
       groupIconVitePlugin({
         customIcon: {
-          'java': 'vscode-icons:file-type-java'
+          'java': 'vscode-icons:file-type-java',
+          'pdm': 'vscode-icons:file-type-pdm',
+          'node': 'vscode-icons:file-type-node',
+          'python': 'vscode-icons:file-type-python',
         },
       })
     ]
