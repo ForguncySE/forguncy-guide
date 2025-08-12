@@ -22,6 +22,8 @@ function extractLinksFromConfig(config: DefaultTheme.Config) {
 }
 
 const links = extractLinksFromConfig(userConfig.themeConfig!)
+// 根路径前缀，和 config.js 中的配置保持一致
+const prefix = '/forguncy-guide'
 
 const targetExportPath = ['/solution/gateway']
 
@@ -59,15 +61,19 @@ export default defineUserConfig({
   },
   urlOrigin: 'https://forguncyse.github.io',
   sorter: (pageA, pageB) => {
-    const aIndex = exportPaths.findIndex(route => { 
-      const path = route.endsWith('.html') ? route.slice(0, -5) : route
-      return path === pageA.path
-    })
-    const bIndex = exportPaths.findIndex(route => { 
-      const path = route.endsWith('.html') ? route.slice(0, -5) : route
-      return path === pageB.path
-    })
-    return aIndex - bIndex
+    const aPath = pageA.path.startsWith(prefix) ? pageA.path.slice(prefix.length) : pageA.path
+    const bPath = pageB.path.startsWith(prefix) ? pageB.path.slice(prefix.length) : pageB.path
+    const aIndex = exportPaths.findIndex(route => {
+      const path = route.endsWith('.html') ? route.slice(0, -5) : route;
+      return path === aPath;
+    });
+    const bIndex = exportPaths.findIndex(route => {
+      const path = route.endsWith('.html') ? route.slice(0, -5) : route;
+      return path === bPath;
+    });
+    const result = aIndex - bIndex;
+    // console.log(`  → 比较结果: aIndex=${aIndex}, bIndex=${bIndex}, 最终排序值 = ${result}`);
+    return result;
   },
   routePatterns: [
     '**',
