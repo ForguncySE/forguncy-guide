@@ -24,6 +24,10 @@ const nav: DefaultTheme.Config['nav'] = [
       {
         text: 'RAG',
         link: '/ai/rag/introduction'
+      },
+      {
+        text: '智能体',
+        link: '/ai/agents/technical-architecture'
       }
     ]
   },
@@ -111,7 +115,8 @@ const sidebar: DefaultTheme.Config['sidebar'] = {
   //     ]
   //   },
   // ],
-  '/ai/rag/': siderbarAIRagGateway(),
+  '/ai/rag/': siderbarAIRag(),
+  '/ai/agents/': siderbarAIAgents(),
   '/standard/': siderbarStandard(),
   '/solution/load-balance': sidebarSolutionLB(),
   '/solution/gateway/': siderbarSolutionGateway(),
@@ -212,7 +217,7 @@ function siderbarStandard() {
 }
 
 // AI - RAG 相关的左侧菜单
-function siderbarAIRagGateway() {
+function siderbarAIRag() {
   return [
     { text: '简介', link: "/ai/rag/introduction" },
     { text: '基础原理', link: "/ai/rag/base-process" },
@@ -230,6 +235,38 @@ function siderbarAIRagGateway() {
       ]
     },
 
+  ]
+}
+
+// AI - Agents 相关的左侧菜单
+function siderbarAIAgents() {
+  return [
+    { text: '技术架构', link: "/ai/agents/technical-architecture" },
+    {
+      text: '智能体模板',
+      items: [
+        {
+          text: '通用场景',
+          items: [
+            { text: '助手问答', link: "/ai/agents/assistant-qa" },
+            { text: '内容评估', link: "/ai/agents/content-evaluation" },
+            { text: '文章创作', link: "/ai/agents/article-creation" },
+          ]
+        },
+        {
+          text: '业务实践',
+          items: [
+            { text: '表单填写', link: "/ai/agents/form-filling" },
+            { text: '发票报销', link: "/ai/agents/invoice-reimbursement" },
+            { text: '简历筛选', link: "/ai/agents/resume-screening" },
+            { text: '智能导购', link: "/ai/agents/intelligent-guidance" },
+            { text: '流程发起', link: "/ai/agents/process-initiation" },
+            { text: '语义解析', link: "/ai/agents/semantic-analysis" },
+          ]
+        }
+
+      ]
+    }
   ]
 }
 
