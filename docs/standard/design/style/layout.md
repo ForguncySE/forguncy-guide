@@ -84,34 +84,36 @@
 【<font color="#1677FF">推荐</font>】在活字格中，我们建议遵循 8 像素原则，提取一组适用于团队设计风格的模度数组，可以在一定程度上帮助我们更好的实现软件应用在布局空间上的一致性。 以下两组模度借鉴了主流的 UI 框架，可以作为您项目中的参考。
 
 <table>
-	<tr>
-	    <td>8</td>
-	    <td>12</td>
+  <tbody>
+    <tr>
+      <td>8</td>
+      <td>12</td>
       <td style="background-color: #1677FF; color: white">20</td>
-	    <td>32</td>
-	    <td>48</td>
-	    <td>80</td>
+      <td>32</td>
+      <td>48</td>
+      <td>80</td>
       <td>128</td>
-	    <td>208</td>
-	    <td>336</td>
-	    <td>552</td>
+      <td>208</td>
+      <td>336</td>
+      <td>552</td>
       <td>896</td>
-	    <td>1440</td>
-	</tr>
-	<tr>
+      <td>1440</td>
+    </tr>
+    <tr>
       <td>4</td>
-	    <td>16</td>
+      <td>16</td>
       <td>24</td>
-	    <td>40</td>
-	    <td>64</td>
-	    <td>104</td>
+      <td>40</td>
+      <td>64</td>
+      <td>104</td>
       <td>168</td>
-	    <td>272</td>
-	    <td>440</td>
-	    <td>720</td>
+      <td>272</td>
+      <td>440</td>
+      <td>720</td>
       <td>1152</td>
-	    <td>1920</td>
-	</tr>
+      <td>1920</td>
+    </tr>
+  </tbody>
 </table>
 
 ::: info 📍 INFO

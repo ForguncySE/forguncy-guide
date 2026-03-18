@@ -16,14 +16,18 @@ function extractLinksFromConfig(config: DefaultTheme.Config) {
     }
   }
 
-  for (const key in config.sidebar)
-    extractLinks(config.sidebar[key])
+  if (config.sidebar) {
+    const sidebar = config.sidebar as Record<string, DefaultTheme.SidebarItem[]>
+    Object.values(sidebar).forEach(sidebarItems => {
+      extractLinks(sidebarItems)
+    })
+  }
   return links
 }
 
 const links = extractLinksFromConfig(userConfig.themeConfig!)
 
-const targetExportPath = ['/solution/gateway']
+const targetExportPath = ['/standard/']
 
 function filterRoutesByPaths(routes: string[], paths: string[]): string[] {
   return routes.filter(route =>
@@ -31,7 +35,10 @@ function filterRoutesByPaths(routes: string[], paths: string[]): string[] {
   );
 }
 
-const exportPaths = filterRoutesByPaths(links, targetExportPath)
+const exportPaths = filterRoutesByPaths(links, targetExportPath).map(path => {
+  const base = path.replace(/\.html$/, '')
+  return base.startsWith('/') ? base : `/${base}`
+})
 
 const headerTemplate = `<div style="margin-top: -0.4cm; height: 70%; width: 100%; display: flex; justify-content: center; align-items: center; color: lightgray; border-bottom: solid lightgray 1px; font-size: 10px;">
   <span class="title"></span>
@@ -42,7 +49,7 @@ const footerTemplate = `<div style="margin-bottom: -0.4cm; height: 70%; width: 1
 </div>`
 
 export default defineUserConfig({
-  outFile: '格言格语-网关方案.pdf',
+  outFile: '活字格标准化.pdf',
   outDir: 'output-pdf',
   pdfOptions: {
     format: 'A4',
@@ -57,27 +64,20 @@ export default defineUserConfig({
       top: 60,
     },
   },
-  urlOrigin: 'https://forguncyse.github.io',
+  urlOrigin: 'http://localhost:5173',
   sorter: (pageA, pageB) => {
-    const aIndex = exportPaths.findIndex(route => { 
-      const path = route.endsWith('.html') ? route.slice(0, -5) : route
-      return path === pageA.path
-    })
-    const bIndex = exportPaths.findIndex(route => { 
-      const path = route.endsWith('.html') ? route.slice(0, -5) : route
-      return path === pageB.path
-    })
+    const aPath = pageA.path.startsWith('/forguncy-guide/') 
+      ? pageA.path.slice('/forguncy-guide'.length) 
+      : pageA.path
+    const bPath = pageB.path.startsWith('/forguncy-guide/') 
+      ? pageB.path.slice('/forguncy-guide'.length) 
+      : pageB.path
+    const aIndex = exportPaths.findIndex(route => route === aPath)
+    const bIndex = exportPaths.findIndex(route => route === bPath)
     return aIndex - bIndex
   },
   routePatterns: [
-    '**',
-    '!/forguncy-guide/index',
-    '!/forguncy-guide/lb-index',
-    '!/forguncy-guide/guide/**',
-    '!/forguncy-guide/standard/**',
-    '!/forguncy-guide/solution/load-balance/**',
-    // '!/forguncy-guide/solution/gateway/**',
-    '!/forguncy-guide/solution/log-monitor/**',
+    ...targetExportPath.map(path => `${path}**`),
     '!/404.html'
   ]
 });

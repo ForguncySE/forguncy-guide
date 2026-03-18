@@ -4,45 +4,10 @@ import { baseUrl, siteDescription, siteTitle } from './meta'
 
 /* 顶部的导航菜单 */
 const nav: DefaultTheme.Config['nav'] = [
-  // {
-  //   text: '学习指南',
-  //   items: [
-  //     { text: '基础入门', link: '/guide/introduction' },
-  //     { text: '进阶演练', link: '/guide/advanced/server-command' },
-  //     { text: '高阶技巧', link: '/guide/higher/component' },
-  //   ],
-  //   activeMatch: '^/guide'
-  // },
   {
     text: '标准化',
     link: '/standard/introduction',
     activeMatch: '^/standard'
-  },
-  {
-    text: 'AI 技术',
-    items: [
-      {
-        text: 'RAG',
-        link: '/ai/rag/introduction'
-      }
-    ]
-  },
-  {
-    text: '解决方案',
-    items: [
-      {
-        text: '负载均衡',
-        link: '/solution/load-balance/introduction'
-      },
-      {
-        text: '网关服务',
-        link: '/solution/gateway/introduction'
-      },
-      {
-        text: '日志监控',
-        link: '/solution/log-monitor/introduction'
-      }
-    ]
   },
   {
     text: `关于`,
@@ -52,8 +17,8 @@ const nav: DefaultTheme.Config['nav'] = [
         link: 'https://www.grapecity.com.cn/solutions/huozige'
       },
       {
-        text: '葡萄城学院',
-        link: 'https://gcdn.grapecity.com.cn/webinars'
+        text: '开发者学堂',
+        link: 'https://learn.grapecity.com.cn/home'
       },
       {
         text: '葡萄城市场',
@@ -65,57 +30,7 @@ const nav: DefaultTheme.Config['nav'] = [
 
 /* 左侧菜单 */
 const sidebar: DefaultTheme.Config['sidebar'] = {
-  // '/guide/': [
-  //   {
-  //     text: '开始',
-  //     items: [
-  //       { text: '简介', link: '/guide/introduction' },
-  //       { text: '快速开始', link: '/guide/quick-start' }
-  //     ]
-  //   },
-  //   {
-  //     text: '基础入门',
-  //     items: [
-  //       { text: '数据表', link: '/guide/primary/data-table' },
-  //       { text: '页面设计', link: '/guide/primary/page-design' },
-  //       { text: '布局', link: '/guide/primary/layout' },
-  //       { text: '命令', link: '/guide/primary/command' },
-  //       { text: '值传递', link: '/guide/primary/value-pass' },
-  //       { text: '母版页', link: '/guide/primary/master-page' },
-  //       { text: '数据校验', link: '/guide/primary/verification' },
-  //       { text: '移动端', link: '/guide/primary/mobile' },
-  //       { text: '用户与组织', link: '/guide/primary/user' },
-  //     ]
-  //   },
-  //   {
-  //     text: '进阶演练',
-  //     items: [
-  //       { text: '服务端命令', link: '/guide/advanced/server-command' },
-  //       { text: '计划任务', link: '/guide/advanced/schedule' },
-  //       { text: '工作流', link: '/guide/advanced/workflow' },
-  //       { text: '报表', link: '/guide/advanced/report' },
-  //       { text: '服务端通知', link: '/guide/advanced/websocket' },
-  //       { text: '权限', link: '/guide/advanced/permission' },
-  //       { text: '应用发布', link: '/guide/advanced/release' },
-  //       { text: '服务端管理', link: '/guide/advanced/user-service' },
-  //     ]
-  //   },
-  //   {
-  //     text: '高阶技巧',
-  //     items: [
-  //       { text: '组件', link: '/guide/higher/component' },
-  //       { text: '插件', link: '/guide/higher/plugin' },
-  //       { text: '安全提供程序', link: '/guide/higher/third-support' },
-  //       { text: '自定义编程', link: '/guide/higher/programming' },
-  //       { text: '服务集成', link: '/guide/higher/service-integration' },
-  //     ]
-  //   },
-  // ],
-  '/ai/rag/': siderbarAIRagGateway(),
   '/standard/': siderbarStandard(),
-  '/solution/load-balance': sidebarSolutionLB(),
-  '/solution/gateway/': siderbarSolutionGateway(),
-  // '/solution/log-monitor/': sidebarSolutionMonitor(),
 }
 
 // 标准化的左侧菜单
@@ -203,132 +118,9 @@ function siderbarStandard() {
         { text: '服务配置', link: '/standard/operation/service' },
       ],
     },
-    // {
-    //   text: '团队建设',
-    //   link: '/standard/team/index'
-    // },
-    { text: '常见问题', link: '/standard/question' },
   ]
 }
 
-// AI - RAG 相关的左侧菜单
-function siderbarAIRagGateway() {
-  return [
-    { text: '简介', link: "/ai/rag/introduction" },
-    { text: '基础原理', link: "/ai/rag/base-process" },
-    {
-      text: 'RAG 实战',
-      items: [
-        { text: '代码实战', link: "/ai/rag/practice-code" },
-        { text: '低代码实战', link: "/ai/rag/practice-lowcode" }
-      ]
-    },
-    {
-      text: 'RAG 框架',
-      items: [
-        { text: 'GC-QA-RAG', link: "/ai/rag/gc-qa-rag" },
-      ]
-    },
-
-  ]
-}
-
-// 负载均衡的左侧菜单
-function sidebarSolutionLB() {
-  return [
-    { text: '简介', link: "/solution/load-balance/introduction" },
-    { text: '环境要求', link: "/solution/load-balance/env-base" },
-
-    {
-      text: '集群安装',
-      items: [
-        { text: '基础平台', link: '/solution/load-balance/platform' },
-        { text: '文件共享', link: '/solution/load-balance/file-share' },
-        { text: 'Chart 安装', link: '/solution/load-balance/chart-install' },
-        { text: '配置设置', link: '/solution/load-balance/config' },
-        { text: '网关代理', link: '/solution/load-balance/gateway' },
-        { text: '升级', link: '/solution/load-balance/upgrade' },
-        { text: '离线安装', link: '/solution/load-balance/offline' },
-        { text: '可视化', link: '/solution/load-balance/dashboard' },
-      ]
-    },
-    {
-      text: '参考',
-      items: [
-        {
-          text: 'Kubernetes',
-          items: [
-            { text: 'minikube', link: '/solution/load-balance/kubernetes/minikube' },
-            { text: 'Docker Desktop', link: '/solution/load-balance/kubernetes/docker-desktop' },
-            { text: 'kubectl', link: '/solution/load-balance/kubernetes/kubectl' },
-            {
-              text: '标准安装',
-              link: '/solution/load-balance/kubernetes/manual',
-              collapsed: true,
-              items: [
-                { text: '环境准备', link: '/solution/load-balance/kubernetes/env-init' },
-                { text: '容器运行时', link: '/solution/load-balance/kubernetes/container-running' },
-                { text: 'kubeadm、kubelet 与 kubectl', link: '/solution/load-balance/kubernetes/base-tools' },
-                { text: '初始化控制面板', link: '/solution/load-balance/kubernetes/master-init' },
-                { text: '配置网络插件', link: '/solution/load-balance/kubernetes/cni' },
-                { text: '添加工作节点', link: '/solution/load-balance/kubernetes/node-join' },
-              ]
-            },
-            { text: 'KubeKey', link: '/solution/load-balance/kubernetes/kubekey' },
-          ]
-        },
-        {
-          text: 'Helm',
-          link: '/solution/load-balance/helm'
-        },
-        { text: '镜像加速', link: '/solution/load-balance/mirror' },
-        { text: '漏洞修复', link: '/solution/load-balance/safe' }
-      ]
-    }
-  ]
-}
-
-// 网关服务的左侧菜单
-function siderbarSolutionGateway() {
-  return [
-    { text: '简介', link: "/solution/gateway/introduction" },
-    {
-      text: '基础使用',
-      items: [
-        { text: 'Web 服务器', link: "/solution/gateway/web-server" },
-        { text: '反向代理', link: "/solution/gateway/reverse-proxy" },
-        { text: '负载均衡器', link: "/solution/gateway/load-balance" },
-        { text: '重定向', link: "/solution/gateway/redirect" },
-        { text: '防盗链', link: "/solution/gateway/defend-link" }
-      ]
-    },
-    {
-      text: '进阶',
-      items: [
-        { text: 'HTTPS', link: "/solution/gateway/https" },
-        { text: '认证证书', link: "/solution/gateway/ssl-cert" },
-        { text: '跨域请求', link: "/solution/gateway/cross-domain" },
-      ]
-    },
-    {
-      text: 'Nginx 参考',
-      items: [
-        { text: '命令行命令', link: "/solution/gateway/nginx-cli" },
-        { text: '配置指令', link: "/solution/gateway/nginx-config" },
-        { text: '日志', link: "/solution/gateway/nginx-log" },
-      ]
-    },
-
-  ]
-}
-
-// 日志监控的左侧菜单
-function sidebarSolutionMonitor() {
-  return [
-    { text: '简介', link: "/solution/log-monitor/introduction" },
-
-  ]
-}
 
 /* 网站配置 */
 export default defineConfig({
